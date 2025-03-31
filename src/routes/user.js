@@ -1,10 +1,12 @@
 const express = require('express');
-const { signUpUser, testError } = require('../handlers/user')
+const { signUpUser, loginUser, test } = require('../handlers/user');
+const checkToken = require('../utils/auth');
 
 const userRouter = express.Router()
 
 userRouter
 .post('/signUp', signUpUser)
-.get('/testError', testError)
+.post('/login', loginUser)
+.get('/test', checkToken, test)
 
 module.exports = userRouter
