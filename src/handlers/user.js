@@ -74,7 +74,6 @@ const loginUser = async (req, res, next) => {
         // removing password field from response data
         const { password: _, ...userData } = user.toObject()
         const token = jwt.sign({ id: userData._id }, process.env.SECRET_KEY, { expiresIn: '20m' })
-        console.log(token)
         res.status(200).json({
             success: true,
             message: 'User logged in successfully',
